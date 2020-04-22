@@ -14,8 +14,9 @@
         <div class="col-lg-12">
 
             <div style="overflow:hidden">
-                <img src="{{ url_for('static', filename='img/icon-192x192.png') }}" style="float:left;margin-right:25px;margin-top:-20px;margin-bottom:20px" />
-                <div><h1>Welcome to CoNekT<br /> <small>a platform dedicated to the visualization and analysis of plant co-expression and co-function networks.</small></h1>
+		    <!-- <img src="{{ url_for('static', filename='img/icon-192x192.png') }}" style="float:left;margin-right:25px;margin-top:-20px;margin-bottom:20px" />  -->
+                <img src="{{ url_for('static', filename='img/legumeinfo_logo.png') }}" style="float:left;margin-right:25px;margin-top:-20px;margin-bottom:20px" />
+                <div><h1>LIS-CoNekT:<br /> <small>Visualization and analysis of co-expression and co-function networks.</small></h1>
                     {% if g.msg %}
                     <div><span class="global-message"><strong>{{ g.msg_title|safe }}: </strong>{{ g.msg|safe }}</span></div>
                     {% endif %}
@@ -23,7 +24,7 @@
             </div>
 
         </div>
-        <div class="col-lg-12">
+        <!--<div class="col-lg-12">
             <div id="new-alert" class="alert alert-info alert-dismissible" role="alert" style="display: none">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <strong>New ?</strong> Check out our CoNekT's features <a href="{{ url_for('main.features') }}">here</a> ! </div>
@@ -48,13 +49,13 @@
                     </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
-    <div class="row">
+    <!--<div class="row">
         <div class="col-lg-12">
           <div class="panel panel-default">
           <div id="featureCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
+            <!-- Indicators ==>
             <ol class="carousel-indicators">
               <li data-target="#featureCarousel" data-slide-to="0" class="active"></li>
               <li data-target="#featureCarousel" data-slide-to="1"></li>
@@ -64,7 +65,7 @@
               <li data-target="#featureCarousel" data-slide-to="5"></li>
             </ol>
 
-            <!-- Wrapper for slides -->
+            <!-- Wrapper for slides ==>
             <div class="carousel-inner">
               <div class="item active">
                 <div class="carousel-div">
@@ -117,7 +118,7 @@
               </div>
             </div>
 
-            <!-- Left and right controls -->
+            <!-- Left and right controls ==>
             <a class="left carousel-control" href="#featureCarousel" data-slide="prev">
               <span class="glyphicon glyphicon-chevron-left"></span>
               <span class="sr-only">Previous</span>
@@ -129,8 +130,8 @@
           </div>
         </div>
         </div>
-    </div>
-    <div class="row">
+    </div> -->
+    <!-- <div class="row">
         <div class="col-lg-6 col-md-6 col-sm-12">
             <div class="panel panel-success"  style="height:300px; overflow-y:scroll">
               <div class="panel-heading">News</div>
@@ -156,7 +157,7 @@
             </div>
         </div>
         {% endif %}
-    </div>
+    </div>  -->
 </div>
 
 </div>
