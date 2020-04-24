@@ -40,6 +40,17 @@ def duplication_consistency(set_one, set_two):
     :return: float with duplication consistency score
     """
     union_size = len(set(set_one).union(set(set_two)))
+    #ORIGINAL <<<<
     intersection_size = len(set(set_one).intersection(set(set_two)))
-
     return intersection_size/union_size
+    #>>>>>>>>>>>>>
+
+    #<<<<< sdash (just for testing)
+    # DISCARD after trees loading successful
+    # if union_size == 0:
+    #     return 0
+    # else:
+    #     intersection_size = len(set(set_one).intersection(set(set_two)))
+    #     return intersection_size/union_size
+    #>>>>>>>>>>>
+

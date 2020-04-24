@@ -44,7 +44,7 @@ def add_tissue_specificity():
         file = request.files[form.file.name].read()
 
         if file != b'':
-            data = file.decode("utf-8").replace("\r\n", "\n").split('\n')
+            data = file.decode("utf-8").replace("\r\n", "\n").splitlines() #S.Dash(Feb-13-2019):data = file.decode("utf-8").replace("\r\n", "\n").split('\n')   print(data) #Sdash debug
 
             order = []
             colors = []

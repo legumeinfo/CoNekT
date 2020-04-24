@@ -30,11 +30,15 @@ class TreeMethod(db.Model):
                             passive_deletes=True)
 
     def reconcile_trees(self):
+        print("\n1.====================Getting into function reconcile_trees")
         # Fetch required data from the database
         sequences = Sequence.query.all()
+        #print("\n1.1.=============================Sequences Joined: " + ', '.join(sequences)) #FAILS, bad print statement for list obj
         clades = Clade.query.all()
+        #print("\n1.2. =========================Clades: ", *clades, sep='\n') # print works
 
         seq_to_species = {s.name: s.species.code for s in sequences}
+        #print("\n2.=========================seq_to_species: ", *seq_to_species, sep='::')
         seq_to_id = {s.name: s.id for s in sequences}
         clade_to_species = {c.name: json.loads(c.species) for c in clades}
         clade_to_id = {c.name: c.id for c in clades}
@@ -46,20 +50,36 @@ class TreeMethod(db.Model):
         for t in self.trees:
             # Load tree from Newick string and start reconciliating
             tree = newick.loads(t.data_newick)[0]
+            print("\n3.=========================tree loaded ok")
 
             for node in tree.walk():
                 if len(node.descendants) != 2:
+                    #print("\n4.==========length of node descendant=" + str(len(node.descendants)))
                     if not node.is_binary:
+                        print("\n5.================Non-Binary-node: " + str(node.is_binary))
                         # Print warning in case there is a non-binary node
-                        print("[%d, %s] Skipping node... Can only reconcile binary nodes ..." % (tree.id, tree.label))
+                        #sdash: commenting out this original print statement because none binary-node doesn't have id nor label. Process stops at this print statement for non-binary trees.
+                        
+                        print("Non-Binary tree: " + t.data_newick)  #sdash: this print statement will show which tree is non-binary and is skipped. Doesn't stop the reconcile process.
+                        #sdash May-03-2019#original#
+                        #print("[%d, %s] Skipping node... Can only reconcile binary nodes ..." % (tree.id, tree.label))
                     # Otherwise it is a leaf node and can be skipped
                     continue
 
                 branch_one_seq = [l.name.strip() for l in node.descendants[0].get_leaves()]
+                # print("\n6.===============Branch-one-seq: " + ', '.join(branch_one_seq))
                 branch_two_seq = [l.name.strip() for l in node.descendants[1].get_leaves()]
+                # print("\n7.===============Branch-two-seq: " + ', '.join(branch_two_seq))
 
                 branch_one_species = set([seq_to_species[s] for s in branch_one_seq if s in seq_to_species.keys()])
+                print("\n8.===============Branch-one-spp: " + ', '.join(branch_one_species))  #Empty set, length=0; seq_to_species length=143271; SO, problem in forming this set definition
+                ## TO DO:
+                #Possibly the seq name seq_to_species doesn't match in branch_one_seq and
+                #  hence, it is an empty set.  Next check this possibility. Tue June 25.
+                
+                
                 branch_two_species = set([seq_to_species[s] for s in branch_two_seq if s in seq_to_species.keys()])
+                print("\n9.===============Branch-two-spp: " + ', '.join(branch_two_species))
 
                 all_species = branch_one_species.union(branch_two_species)
 
