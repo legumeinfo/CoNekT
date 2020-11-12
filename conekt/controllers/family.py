@@ -29,8 +29,49 @@ def family_find(family_name):
     """
     current_family = GeneFamily.query.filter_by(name=family_name).first_or_404()
 
-    return redirect(url_for('family.family_view', family_id=current_family.id))
+    #return redirect(url_for('family.family_view', family_id=current_family.id))
+    return family_view(current_family.id) #testing sdash 2020-0809
+  
+##<<<<<<<<< sdash testing  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+@family.route('/find_forLIS/<family_name>')
+@cache.cached()
+def family_find_forLIS(family_name):
+    """
+    Find a gene family based on the name and show the minimal details
+    for this family suitable only for LIS purpose, possibly for iframing
+    within a drupal page.
+
+    :param family_name: Name of the gene family
+    """
+    current_family = GeneFamily.query.filter_by(name=family_name).first_or_404()
+
+    #return redirect(url_for('family.family_view', family_id=current_family.id))
+    return family_view_forLIS(current_family.id) #testing sdash 2020-0809
+
+
+
+@family.route('/view_forLIS/<family_id>')
+def family_view_forLIS(family_id):
+    """
+    Get a gene family based on the ID and show the minimal details
+    for this family suitable only for LIS purpose, possibly for iframing
+    within a drupal page.
+
+    :param family_id: ID of the gene family
+    """
+    current_family = GeneFamily.query.get_or_404(family_id)
+    sequence_count = len(current_family.sequences.with_entities(Sequence.id).all())
+
+    return render_template('family_forLIS.html', family=current_family,
+                           count=sequence_count,
+                           xrefs=current_family.xrefs.all())
+
+
+
+
+##>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  
 
 @family.route('/view/<family_id>')
 def family_view(family_id):

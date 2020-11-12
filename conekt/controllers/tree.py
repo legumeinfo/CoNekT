@@ -17,6 +17,39 @@ def trees_overview():
 
     return render_template('tree.html', trees=methods)
 
+#sdash testing <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+@tree.route('/find_forLIS/<tree_label>')
+@cache.cached()
+def tree_find(tree_label):
+    """
+    Trying to display tree view from url with tree_label instead of internal tree-id.
+
+    :param tree_label: tree label (familyName suffixed with _tree)
+    """
+    #tree_label = tree_label + "_tree"
+    #current_tree = Tree.query.filter_by(tree_name).first_or_404()
+    current_tree = Tree.query.filter_by(label=tree_label).first_or_404()
+    #current_tree = Tree.query.get_or_404(label=tree_label)  #got an unexpected keyword argument 'label'
+    
+    return tree_view_forLIS(current_tree.id)
+
+
+@tree.route('/view_forLIS/<int:tree_id>')
+@cache.cached()
+def tree_view_forLIS(tree_id):
+    tree = Tree.query.get_or_404(tree_id)
+    association_count = SequenceSequenceCladeAssociation.query.filter(SequenceSequenceCladeAssociation.tree_id ==tree_id).count()
+
+    return render_template('tree_forLIS.html', tree=tree, association_count=association_count)
+
+
+
+
+
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 
 @tree.route('/view/<int:tree_id>')
 @cache.cached()

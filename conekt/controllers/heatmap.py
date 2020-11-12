@@ -167,6 +167,27 @@ def heatmap_comparative_tree(tree_id, option='raw'):
                            raw=1 if option == 'raw' else 0,
                            tree=tree)
 
+##<<<<<<< sdash trying forLIS with tree name not tree_id <<<<<<<<<<
+# Code not yet modified, just copied for modification 
+@heatmap.route('/comparative/tree_forLIS/<int:tree_id>')
+@heatmap.route('/comparative/tree_forLIS/<int:tree_id>/<option>')
+@cache.cached()
+def heatmap_comparative_tree_forLIS(tree_id, option='raw'):
+    tree = Tree.query.get_or_404(tree_id)
+    sequences = tree.sequences
+    sequence_ids = [s.id for s in sequences]
+
+    heatmap_data = CrossSpeciesExpressionProfile().get_heatmap(*sequence_ids, option=option)
+
+    return render_template("expression_heatmap.html", order=heatmap_data['order'],
+                           profiles=heatmap_data['heatmap_data'],
+                           zlog=1 if option == 'zlog' else 0,
+                           raw=1 if option == 'raw' else 0,
+                           tree=tree)
+
+##>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 
 @heatmap.route('/comparative/family/<int:family_id>')
 @heatmap.route('/comparative/family/<int:family_id>/<option>')
@@ -189,6 +210,38 @@ def heatmap_comparative_family(family_id, option='raw'):
     else:
         flash("Cannot create a comparative heatmap for this family.", "warning")
         return redirect(url_for('family.family_view', family_id=family_id))
+
+##<<<<<<<<<  sdash trying for LIS with family name, not family_id <<<<<<<<<<<<<
+#Code not yet modified, just copied for modification
+
+# @heatmap.route('/comparative/family_forLIS/<int:family_id>')
+# @heatmap.route('/comparative/family_forLIS/<int:family_id>/<option>')
+@heatmap.route('/comparative/family_forLIS/<family_name>')
+@heatmap.route('/comparative/family_forLIS/<family_name>/<option>')
+@cache.cached()
+#orig#def heatmap_comparative_family_forLIS(family_id, option='raw'):
+def heatmap_comparative_family_forLIS(family_name, option='raw'):
+    #original#family = GeneFamily.query.get_or_404(family_id)
+    #sdash#Use, perhaps, `GeneFamily.query.filter_by(name=family_name).first_or_404()`
+    family = GeneFamily.query.filter_by(name=family_name).first_or_404()  #sdash added
+    sequences = family.sequences
+    sequence_ids = [s.id for s in sequences]
+
+    heatmap_data = CrossSpeciesExpressionProfile().get_heatmap(*sequence_ids, option=option)
+
+    print(heatmap_data)
+
+    if not heatmap_data['order'] == [] and not heatmap_data['heatmap_data'] == []:
+        return render_template("expression_heatmap.html", order=heatmap_data['order'],
+                               profiles=heatmap_data['heatmap_data'],
+                               zlog=1 if option == 'zlog' else 0,
+                               raw=1 if option == 'raw' else 0,
+                               family=family)
+    else:
+        flash("Cannot create a comparative heatmap for this family.", "warning")
+        return redirect(url_for('family.family_view', family_id=family_id))
+
+##>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
 @heatmap.route('/inchlib/j/<cluster_id>.json')

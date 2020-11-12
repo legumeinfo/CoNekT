@@ -26,7 +26,29 @@ def sequence_find(sequence_name):
     """
     current_sequence = Sequence.query.filter_by(name=sequence_name).first_or_404()
 
-    return redirect(url_for('sequence.sequence_view', sequence_id=current_sequence.id))
+    #return redirect(url_for('sequence.sequence_view', sequence_id=current_sequence.id))
+    return sequence_view(current_sequence.id)
+
+##<<<<<<
+@sequence.route('/find_forLIS/<sequence_name>')
+@cache.cached()
+def sequence_find_forLIS(sequence_name):
+    """
+    Find a sequence based on the name and show the details for this sequence (useful for incoming links from other
+    platforms)
+
+    :param sequence_name: Name of the sequence
+    """
+    current_sequence = Sequence.query.filter_by(name=sequence_name).first_or_404()
+
+    #return redirect(url_for('sequence.sequence_view', sequence_id=current_sequence.id))
+    # return sequence_view(current_sequence.id)
+    return sequence_view_forLIS(current_sequence.id)
+  
+
+
+##>>>>>>>
+
 
 
 @sequence.route('/view/<sequence_id>')
@@ -56,6 +78,40 @@ def sequence_view(sequence_id):
                            coexpression_clusters=current_sequence.coexpression_clusters.all(),
                            ecc_query_associations=current_sequence.ecc_query_associations.all()
                            )
+##<<<<<<
+
+@sequence.route('/view_forLIS/<sequence_id>')
+@cache.cached()
+def sequence_view_forLIS(sequence_id):
+    """
+    Get a sequence based on the ID and show the details for this sequence
+
+    :param sequence_id: ID of the sequence
+    """
+    from conekt.models.relationships.sequence_go import SequenceGOAssociation
+
+    current_sequence = Sequence.query.get_or_404(sequence_id)
+
+    go_associations = current_sequence.go_associations.group_by(SequenceGOAssociation.go_id,
+                                                                SequenceGOAssociation.evidence,
+                                                                SequenceGOAssociation.source).all()
+
+    # to avoid running long count queries, fetch relations here and pass to template
+    return render_template('sequence_forLIS.html',
+                           sequence=current_sequence,
+                           go_associations=go_associations,
+                           interpro_associations=current_sequence.interpro_associations.all(),
+                           families=current_sequence.families.all(),
+                           expression_profiles=current_sequence.expression_profiles.all(),
+                           network_nodes=current_sequence.network_nodes.all(),
+                           coexpression_clusters=current_sequence.coexpression_clusters.all(),
+                           ecc_query_associations=current_sequence.ecc_query_associations.all()
+                           )
+
+
+
+
+##>>>>
 
 
 @sequence.route('/tooltip/<sequence_id>')
