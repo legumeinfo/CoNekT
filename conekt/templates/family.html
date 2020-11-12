@@ -38,7 +38,8 @@
 
     <p>Trees:
     {% for t in family.trees %}
-        <b>NEW LINK:</b><a href="{{ url_for('tree.tree_find', tree_label=t.label) }}">{{t.label}}</a>&nbsp;|&nbsp<b>Old Link:</b><a href="{{ url_for('tree.tree_view', tree_id=t.id) }}">{{t.label}}</a> ({{t.method.description}})
+        <a href="{{ url_for('tree.tree_find', tree_label=t.label) }}">{{t.label}}</a>
+        {# &nbsp;|&nbsp<b>Old Link:</b><a href="{{ url_for('tree.tree_view', tree_id=t.id) }}">{{t.label}}</a> #} ({{t.method.description}})
     {% else%}
     <span class="text-muted">No tree available</span>
     {% endfor %}
