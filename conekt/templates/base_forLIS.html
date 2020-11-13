@@ -34,7 +34,7 @@
         </script>
     </head>
     <body data-spy="scroll" data-target="#navbar-side" data-offset="55">
-        <template> <!-- Commented out with template tag: Navigation bar at top for LIS iframing -->
+        <!--<template>--> <!-- Commented out with template tag (if needed): Navigation bar at top for LIS iframing -->
         
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container clearfix">
@@ -45,13 +45,13 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-		    <a class="navbar-brand hidden-xs" href="{{ url_for('main.screen') }}"><img src="{{ url_for('static', filename='img/legumeinfo_logo_48x48.png') }}" style="max-width:100px;margin-left:-7px;margin-top: -13px;float:left;margin-right:5px;" width="48px"/> DEV-conekt(ForLISfuncs):xxx5008xxx</a>   {# original image: icon-48x48.png #}
+		    <a class="navbar-brand hidden-xs" href="{{ url_for('main.screen') }}"><img src="{{ url_for('static', filename='img/legumeinfo_logo_48x48.png') }}" style="max-width:100px;margin-left:-7px;margin-top: -13px;float:left;margin-right:5px;" width="48px"/>CoNekT-Legumes:</a>   {# original image: icon-48x48.png #}
 		    <a class="navbar-brand visible-xs" href="{{ url_for('main.screen') }}"><img src="{{ url_for('static', filename='img/legumeinfo_logo_48x48.png') }}" style="max-width:100px; margin-top: -7px;" width="32px"/></a> {# original image: icon-32x32.png  #}  
                 </div>
 
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-left">
-			<li><a href="{{ url_for('species.species_overview') }}">Species</a></li>
+                        <li><a href="{{ url_for('species.species_overview') }}">Species</a></li>
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tools <span class="caret"></span></a>
                             <ul class="dropdown-menu">
@@ -94,13 +94,13 @@
 
                             </form>
 			</li>  -->
-			<li>
+                        <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                     {% if g.tutorial %}
                                     <li><a href="{{ g.tutorial }}">Tutorial <span class="text-muted"></span></a></li>
                                     {% endif %}
-                                    <li><a href="{{ url_for('main.contact') }}">Contact</a></li>
+                                    <!--<li><a href="{{ url_for('main.contact') }}">Contact</a></li>-->
                                 </li>
                             </ul>
                         </li>
@@ -119,7 +119,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="hidden-sm hidden-md">Not logged in!</span><span class="hidden-xs hidden-lg"><i class="fa fa-cogs" aria-hidden="true"></i></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ url_for('auth.login') }}"><i class="fa fa-sign-in"></i> Log in</a></li>
-                                    <li><a href="{{ url_for('auth.register') }}"><i class="fa fa-user-plus"></i> Register</a></li>
+                                    <!--<li><a href="{{ url_for('auth.register') }}"><i class="fa fa-user-plus"></i> Register</a></li>-->
                                 </ul>
                                 {% endif %}
                             {% endif %}
@@ -135,7 +135,7 @@
             </div>
         </div>
         
-        </template>
+        <!--</template>-->
 
 
         <!-- Code to get flash function working -->
