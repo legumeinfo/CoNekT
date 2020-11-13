@@ -1,4 +1,5 @@
-{% extends 'base_forLIS.html' %}
+{% extends 'base.html' %}
+{# {% extends 'base_forLIS.html' %} #}
 
 {% block title %}
     {% if family %}
@@ -31,7 +32,7 @@
         <li><abbr title="Click to show help" href="{{ url_for('help.help_topic', topic='gene_family') }}" data-target="#helpModal">Gene Family</abbr></li>
         <li class="active"><strong>{{ family.name }}</strong></li>
     </ol>
-    <h1>Template: family_forLIS.html</h1>
+    <!--<h1>Template: family_forLIS.html</h1>-->
     <h1><strong>{{ family.name }}</strong> <small>({{ family.method.method }})</small></h1>
 
     <p>View comparative expression as heatmap: <a href="{{ url_for('heatmap.heatmap_comparative_family', family_id=family.id, option='raw') }}">raw</a> <span class="text-muted">| <a href="{{ url_for('heatmap.heatmap_comparative_family', family_id=family.id, option='row') }}">row-normalized</a></span></p>
