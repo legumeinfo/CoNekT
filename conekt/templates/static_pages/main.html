@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    CoNekT : Co-expression Network Toolkit
+    CoNekT@LIS : Co-expression Network Toolkit at LIS
 {% endblock %}
 
 {% block container %}
@@ -16,9 +16,15 @@
             <div style="overflow:hidden">
                 <!--<img src="{{ url_for('static', filename='img/icon-192x192.png') }}" style="float:left;margin-right:25px;margin-top:-20px;margin-bottom:20px" />-->
                 <img src="{{ url_for('static', filename='img/legumeinfo_logo.png') }}" style="float:left;margin-right:25px;margin-top:-20px;margin-bottom:20px" />
-                <div><!--<h1>Welcome to CoNekT<br /> <small>a platform dedicated to the visualization and analysis of plant co-expression and co-function networks.</small></h1>--><h1>Welcome to CoNekT-Legumes<br /> <small>a platform dedicated to the visualization and analysis of co-expression and co-function networks in legumes.</small></h1>
+                <div><!--<h1>Welcome to CoNekT<br /> <small>a platform dedicated to the visualization and analysis of plant co-expression and co-function networks.</small></h1>-->
+                <h1>Welcome to CoNekT@LIS: <br /> <small>a platform dedicated to the visualization and analysis of co-expression and co-function networks in legumes at LIS.</small></h1>
+                    <p style="font-size: medium; font-weight: bold;">This is an instance of <a href="https://github.molgen.mpg.de/proost/CoNekT" target="_blank">CoNekT</a> (Coexpression Network Toolkit) at LIS, The <a href="https://legumeinfo.org" target="_blank">Legume Information System</a>.</p>
+                    <p>This is work in progress at LIS and only some functionalities of CoNekT have been implimented here so far. </p>
+                    <p><b>Publication for CoNekT:</b><br />CoNekT: an open-source framework for comparative genomic and transcriptomic network analyses (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6030989/" target="_blank">Proost and Mutwil, NAR 2018</a>).</p>
+                    <p>More information about CoNekT is available at <a href="https://github.molgen.mpg.de/proost/CoNekT" target="_blank">GitHub</a>.</p>
+                    <br /><br />
                     {% if g.msg %}
-                    <div><span class="global-message"><strong>{{ g.msg_title|safe }}: </strong>{{ g.msg|safe }}</span></div>
+                    <div><span class="global-message"><strong>**{{ g.msg_title|safe }}: </strong>{{ g.msg|safe }}</span></div>
                     {% endif %}
                 </div>
             </div>
