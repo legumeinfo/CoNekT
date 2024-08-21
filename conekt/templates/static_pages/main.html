@@ -24,31 +24,34 @@ The current version was built with a few species using the following annotations
 
 <style>p {  text-indent: 30px; }</style>
 <h3>Commonly Used Tools</h3>
-
-<b style="font-size:larger"><!--<a href="/conekt/search/advanced"> -->Expression Profile of a Single Gene and Profile Neighbors:</b>
-<p>Paste an exact gene ID from the appropriate annotation to display its expression profile and below it also <b>find similarly expressed genes(profile neighbors)</b> in section 'Co-expression Networks' in the result page. </p>
+<br/>
+<b style="font-size:larger">Expression Profile of a Single Gene, Family Members and Profile Neighbors:</b>
+<p>Paste & submit below an exact gene ID from the appropriate annotation to <br/>
+ (i) display its expression profile, <br/> 
+ (ii) click the link for 'Phylogenetic Tree(s):' to display a comparative <b>heatmap of the gene family members</b> and <br/> 
+ (iii) below it <b>find similarly expressed genes(profile neighbors)</b> in section 'Co-expression Networks' in the result page. <br/></p> 
 <form id="gotogeneform" oninput="urlgene = parturl.value +''+ geneid.value.trim(); gotogeneform.action= urlgene; genelink.href= urlgene; genelink.innerHTML = urlgene;" >
-    <input id="parturl" type="hidden" value="/conekt/sequence/find_forLIS/" />
+    <input id="parturl" type="hidden" value="/sequence/find_forLIS/" />
     <b>geneID (Full exact ID):</b> <input type="text" id="geneid" defaultValue="arahy.Tifrunner.gnm2.ann1.0003EL"  size="50" /> 
     <input type="submit"  value="submit"/><br/>
     <b>Examples:</b> &nbsp;&nbsp;&nbsp; arahy.Tifrunner.gnm2.ann1.0003EL &nbsp;&nbsp;&nbsp;  cicar.CDCFrontier.gnm1.ann1.Ca_06316 &nbsp;&nbsp;&nbsp;&nbsp; glyma.Wm82.gnm2.ann1.Glyma.06G321800 &nbsp;&nbsp;&nbsp; phavu.G19833.gnm1.ann1.Phvul.001G000500 &nbsp;&nbsp;&nbsp; vigun.IT97K-499-35.gnm1.ann1.Vigun06g115800  
 </form>
 <font style="color:gray">URL for the gene:</font> <a id="genelink" ></a> <br/>
-
-<b style="font-size:larger"><a href="/conekt/profile_comparison/">Compare Expression Profiles</a>:</b>
+<br/>
+<b style="font-size:larger"><a href="/profile_comparison/">Compare Expression Profiles</a>:</b>
 <p> Compare the expression of up to 50 genes on the same graph in each experimental condition or tissue.</p>
 
-<b style="font-size:larger"><a href="/conekt/heatmap/">Gene Expression Heatmap</a>:</b>
+<b style="font-size:larger"><a href="/heatmap/">Gene Expression Heatmap</a>:</b>
 <p> Visualize gene expression of a list of genes as a heatmap. The expression of a list of genes can be compared within a species using the default tab or between species using the comparative tab as a heatmap. The between species comparison can accept a list of more than 50 genes but is limited in the number of conditions or tissues visualized-- only for those tissue groups common to multiple species.</p>
 
-<b style="font-size:larger"><a href="/conekt/search/specific/profiles">Find Genes Specifically Expressed in a Given Tissue</a>:</b>
+<b style="font-size:larger"><a href="/search/specific/profiles">Find Genes Specifically Expressed in a Given Tissue</a>:</b>
 <p>Using the form here genes can be found which are expressed specifically under a desired condition. Try SPM value 1.0 to list highly specific genes if exist.</p>
 
-<b style="font-size:larger"><a href="/conekt/specificity_comparison/">Compare Specificity </a>:</b>
+<b style="font-size:larger"><a href="/specificity_comparison/">Compare Specificity </a>:</b>
 <p>Find out which genes are expressed specifically in species and/or conditions and have homologs expressed in a different species and/or condition.</p>
 
-<b style="font-size:larger"><a href="/conekt/search/advanced">Expression of Gene Family Members</a>:</b>
-<p>Use the Advanced Search tool to choose a species and input the exact gene family ID (select the available method; do not disable). Search will list all the available genes in the given gene family with links to each of their expression profiles.</p>
+<b style="font-size:larger"><a href="/search/advanced">Expression of Gene Family Members</a>:</b>
+<p>Use the Advanced Search tool to choose a species and input the exact gene family ID (select the available method; do not disable). Search will list all the available genes in the given gene family with links to each of their expression profiles. Example grne family id: legfed_v1_0.L_D1KBMC </p>
 <hr/>
 <section id="datasets">
 <h3> Source of Data</h3>
@@ -61,7 +64,7 @@ Cicer: <br/>
 <a href="https://doi.org/10.1111/pbi.12059"  target="_blank"> Singh, V.K., Garg, R. and Jain, M. (2013), A global view of transcriptome dynamics during flower development in chickpea by deep sequencing. Plant Biotechnol J, 11: 691-701</a> (<a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA182724" target="_blank">PRJNA182724</a>)
 <br/>
 Glycine: <br/>
-<a href="https://doi.org/0.1111/j.1365-313X.2010.04222.x target="_blank"> Libault M et al., An integrated transcriptome atlas of the crop model Glycine max, and its use in comparative analyses in plants., Plant J, 2010 Apr 7;63(1):86-99</a>    
+<a href="https://doi.org/10.1111/j.1365-313X.2010.04222.x" target="_blank"> Libault M et al., An integrated transcriptome atlas of the crop model Glycine max, and its use in comparative analyses in plants., Plant J, 2010 Apr 7;63(1):86-99</a>    
 <br/>
 Phaseolus: <br/>
 <a href="https://doi.org/10.1186/1471-2164-15-866"  target="_blank">O'Rourke JA, Iniguez LP, Fu F, Bucciarelli B, Miller SS, Jackson SA, McClean PE, Li J, Dai X, Zhao PX, Hernandez G, Vance CP. An RNA-Seq based gene expression atlas of the common bean. BMC Genomics. 2014 Oct 6;15:866.</a> (<a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA210619"  target="_blank">PRJNA210619</a>)
