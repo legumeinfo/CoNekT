@@ -244,7 +244,9 @@ class Tree(db.Model):
                                     line('name', label)
                             with tag('gradient'):
                                 line('name', 'YlGnBu')
-                                line('classes', len(heatmap_order))
+                                #line('classes', len(heatmap_order))
+                                #colorbrewer YlGnBu doesn't support more than 9 classes
+                                line('classes', min(len(heatmap_order),9))
                         with tag('data'):
                             for cd in csep_data:
                                 if "profile" in cd.keys() and "data" in cd["profile"].keys():
