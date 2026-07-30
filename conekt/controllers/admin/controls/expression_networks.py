@@ -28,12 +28,11 @@ def add_coexpression_network():
         pcc_cutoff = float(request.form.get('pcc_cutoff'))
         enable_second_level = True if request.form.get('enable_second_level') == 'y' else False
 
-        file = request.files[form.file.name].read()
+        file = request.files[form.file.name]
 
         if file != b'':
             fd, temp_path = mkstemp()
-            with open(temp_path, 'wb') as network_writer:
-                network_writer.write(file)
+            file.save(temp_path)
 
             ExpressionNetwork.read_expression_network_lstrap(temp_path, species_id, description,
                                                              pcc_cutoff=pcc_cutoff,
