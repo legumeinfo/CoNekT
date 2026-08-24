@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    CoNekT@LIS : Co-expression Network Toolkit at LIS
+    CoNekT@LIS-V2 : Co-expression Network Toolkit at LIS
 {% endblock %}
 
 {% block container %}
@@ -19,8 +19,8 @@
                 <div><!--<h1>Welcome to CoNekT<br /> <small>a platform dedicated to the visualization and analysis of plant co-expression and co-function networks.</small></h1>-->
 			
 <!-- ========================================================= -->
-<h2><small>A toolkit to visualize co-expression of genes across species in selected datasets</small></h2>			
-The current version was built with a few species using the following annotations-- <b>arahy.Tifrunner.gnm2.ann1, cicar.CDCFrontier.gnm1.ann1, glyma.Wm82.gnm2.ann1, phavu.G19833.gnm1.ann1, vigun.IT97K-499-35.gnm1.ann1</b> and accepts only those gene IDs. See <a href="#datasets">below</a> for the source of data. 
+<h2>CoNekT@LIS-V2: <small>A toolkit to visualize co-expression of genes across species in selected crop legume datasets</small></h2>			
+The current version (V2, 2025-26) was built with six species using the following annotations-- <b>arahy.Tifrunner.gnm2.ann2, cajca.ICPL87119.gnm2.ann1, cicar.CDCFrontier.gnm3.ann1, glyma.Wm82.gnm4.ann1, phavu.G19833.gnm2.ann1, vigun.IT97K-499-35.gnm1.ann2</b> and accepts only those gene IDs. See <a href="#datasets">below</a> for the source of data. 
 
 <style>p {  text-indent: 30px; }</style>
 <h3>Commonly Used Tools</h3>
@@ -34,7 +34,7 @@ The current version was built with a few species using the following annotations
     <input id="parturl" type="hidden" value="/sequence/find_forLIS/" />
     <b>geneID (Full exact ID):</b> <input type="text" id="geneid" defaultValue="arahy.Tifrunner.gnm2.ann1.0003EL"  size="50" /> 
     <input type="submit"  value="submit"/><br/>
-    <b>Examples:</b> &nbsp;&nbsp;&nbsp; arahy.Tifrunner.gnm2.ann1.0003EL &nbsp;&nbsp;&nbsp;  cicar.CDCFrontier.gnm1.ann1.Ca_06316 &nbsp;&nbsp;&nbsp;&nbsp; glyma.Wm82.gnm2.ann1.Glyma.06G321800 &nbsp;&nbsp;&nbsp; phavu.G19833.gnm1.ann1.Phvul.001G000500 &nbsp;&nbsp;&nbsp; vigun.IT97K-499-35.gnm1.ann1.Vigun06g115800  
+    <b>Examples:</b> &nbsp;&nbsp;&nbsp; arahy.Tifrunner.gnm2.ann2.Ah02g090800 &nbsp;&nbsp;&nbsp; cajca.ICPL87119.gnm2.ann1.Cc_01839 &nbsp;&nbsp;&nbsp; cicar.CDCFrontier.gnm3.ann1.Ca0g025200  &nbsp;&nbsp;&nbsp;&nbsp; glyma.Wm82.gnm4.ann1.Glyma.01G066100 &nbsp;&nbsp;&nbsp; phavu.G19833.gnm2.ann1.Phvul.001G016600  &nbsp;&nbsp;&nbsp; vigun.IT97K-499-35.gnm1.ann2.Vigun03g200500  
 </form>
 <font style="color:gray">URL for the gene:</font> <a id="genelink" ></a> <br/>
 <br/>
@@ -59,7 +59,9 @@ The current version was built with a few species using the following annotations
 Arachis:<br/>
 <a href="https://doi.org/10.3389/fpls.2016.01446" target="_blank">Josh Clevenger, Ye Chu, Brian Scheffler, Peggy Ozias-Akins, A Developmental Transcriptome Map for Allotetraploid Arachis hypogaea, Front. Plant Sci. (2016)"</a>(<a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA291488" target="_blank">PRJNA291488</a>)  
 <br/>
-
+Cajanus:<br/>
+<a href="https://doi.org/10.1093/jxb/erx010" target="_blank">Gene expression atlas of pigeonpea and its application to gain insights into genes associated with pollen fertility implicated in seed formation</a> (<a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA354681"  target="_blank">PRJNA354681</a>)
+<br/>
 Cicer: <br/> 
 <a href="https://doi.org/10.1111/pbi.12059"  target="_blank"> Singh, V.K., Garg, R. and Jain, M. (2013), A global view of transcriptome dynamics during flower development in chickpea by deep sequencing. Plant Biotechnol J, 11: 691-701</a> (<a href="https://www.ncbi.nlm.nih.gov/bioproject/PRJNA182724" target="_blank">PRJNA182724</a>)
 <br/>
@@ -85,8 +87,7 @@ Vigna: <br/>
 <!-- #########################################################  -->			
 
 <h3/>About CoNekT</h3>
-                    <p style="font-size: medium;">This is an instance of <a href="https://github.molgen.mpg.de/proost/CoNekT" target="_blank">CoNekT</a> (Coexpression Network Toolkit) at LIS, The <a href="https://legumeinfo.org" target="_blank">Legume Information System</a>.</p>
-                    <p>It is work in progress at LIS and only some functionalities of CoNekT have been implimented here so far. </p>
+                    <p style="font-size: medium;">This is an instance of <a href="https://github.molgen.mpg.de/proost/CoNekT" target="_blank">CoNekT</a> (Coexpression Network Toolkit) at LIS, The <a href="https://legumeinfo.org" target="_blank">Legume Information System</a>. We have implimented only some functionalities of CoNekT, others which relate to GO and InterPro annotations will be implimented at a later time. </p>
                     <p><b>Publication for CoNekT:</b><br />CoNekT: an open-source framework for comparative genomic and transcriptomic network analyses (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6030989/" target="_blank">Proost and Mutwil, NAR 2018</a>).</p>
 		    More information about CoNekT is available at <a href="https://github.molgen.mpg.de/proost/CoNekT" target="_blank">GitHub</a>(the original version) and more recently at <a href="https://github.com/sepro/CoNekT" target="_blank">https://github.com/sepro/CoNekT</a>.
 		    <hr/>
